@@ -4,6 +4,9 @@ set(ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 set(EXTERN_DIR ${ROOT_DIR}/Extern)
 set(SCRIPTS_DIR ${ROOT_DIR}/CMake)
 
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED true)
+
 project(Source2Py LANGUAGES CXX)
 
 include("${SCRIPTS_DIR}/Source2SDK.cmake")
