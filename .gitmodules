@@ -1,3 +1,7 @@
 [submodule "Extern/metamod-source"]
 	path = Extern/metamod-source
 	url = https://github.com/alliedmodders/metamod-source
+[submodule "Extern/hl2sdk-cs2"]
+	path = Extern/hl2sdk-cs2
+	url = https://github.com/alliedmodders/hl2sdk
+	branch = cs2
