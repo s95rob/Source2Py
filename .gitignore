@@ -1,0 +1,5 @@
+[Bb]uild/
+
+# Visual Studio ignores
+.vs/
+[Oo]ut/
