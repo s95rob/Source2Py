@@ -18,7 +18,7 @@ It should go something like this:
 ```bash
 git clone --recursive https://github.com/s95rob/Source2Py && cd Source2Py
 mkdir build && cd build
-cmake .. -DPYTHON_INCLUDE_DIR=/path/to/python/include -DPYTHON_LIB_DIR/path/to/python/libs -PYTHON_LIB=python311
+cmake .. -DPYTHON_INCLUDE_DIR=/path/to/python/include -DPYTHON_LIB_DIR=/path/to/python/libs -DPYTHON_LIB=python311
 cmake --build .
 ```
 
