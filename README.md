@@ -23,7 +23,7 @@ cmake --build .
 ```
 
 ## Installing
-_Source2Py is built to be used with [Metamod:Source](https://www.metamodsource.net/downloads.php/?branch=master). Make sure you've installed it correctly before moving on._
+_Source2Py is built to be used with [Metamod:Source](https://www.metamodsource.net/downloads.php/?branch=master). [Make sure you've installed it correctly before moving on.](https://cs2.poggu.me/metamod/installation/)_
 
 Copy the contents of the generated `Package` folder from your build directory to your game's `addons` folder (`<cs2>/game/csgo/addons`). 
 Launch the plugin on your server: 
