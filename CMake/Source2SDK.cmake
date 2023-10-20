@@ -1,23 +1,39 @@
-# Linux only for now
-
 set(SOURCE2SDK_DIR ${EXTERN_DIR}/hl2sdk-cs2)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fpermissive -Wno-error")
+if (UNIX)
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fpermissive -Wno-error")
 
-add_compile_definitions(
-	POSIX
-	COMPILER_GCC
-	PLATFORM_64BITS
-)
+	add_compile_definitions(
+		POSIX
+		COMPILER_GCC
+		PLATFORM_64BITS
+	)
 
-set(SOURCE2SDK_LIB_DIRS
-	${SOURCE2SDK_DIR}/lib/linux64
-)
+	set(SOURCE2SDK_LIB_DIRS
+		${SOURCE2SDK_DIR}/lib/linux64
+	)
 
-set(SOURCE2SDK_LIBS
-	-l:interfaces.a
-	-l:tier1.a
-)
+	set(SOURCE2SDK_LIBS
+		-l:interfaces.a
+		-l:tier1.a
+	)
+elseif (WIN32)
+	add_compile_definitions(
+		COMPILER_MSVC64
+		COMPILER_MSVC
+		PLATFORM_64BITS
+	)
+
+	set(SOURCE2SDK_LIB_DIRS
+		${SOURCE2SDK_DIR}/lib/public/win64
+	)
+
+	set(SOURCE2SDK_LIBS
+		tier0
+		tier1
+		interfaces
+	)
+endif()
 
 set(SOURCE2SDK_INCLUDE_DIRS
 	${SOURCE2SDK_DIR}
