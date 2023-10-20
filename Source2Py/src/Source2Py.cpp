@@ -30,7 +30,7 @@ namespace Source2Py {
 		std::string line;
 		while (std::getline(pypluginsFile, line)) {
 			// ignore comments
-			if (line[0] == '#' || line[0] == ';')
+			if (line[0] == '#' || line[0] == ';' || line.empty())
 				continue;
 
 			PyPlugin plugin(line);
