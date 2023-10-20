@@ -16,14 +16,14 @@ There are 3 configure flags that _must_ be set to build correctly:
 
 It should go something like this: 
 ```bash
-git clone https://github.com/s95rob/Source2Py && cd Source2Py
+git clone --recursive https://github.com/s95rob/Source2Py && cd Source2Py
 mkdir build && cd build
 cmake .. -DPYTHON_INCLUDE_DIR=/path/to/python/include -DPYTHON_LIB_DIR/path/to/python/libs -PYTHON_LIB=python311
 cmake --build .
 ```
 
 ## Installing
-_Source2Py is built to be used with [Metamod:Source](https://www.metamodsource.net/downloads.php/?branch=master). [Make sure you've installed it correctly before moving on.](https://cs2.poggu.me/metamod/installation/)_
+_Source2Py is built to be used with [Metamod:Source](https://www.metamodsource.net/downloads.php/?branch=master) (tested and working on build 1244). [Make sure you've installed it correctly before moving on.](https://cs2.poggu.me/metamod/installation/)_
 
 Copy the contents of the generated `Package` folder from your build directory to your game's `addons` folder (`<cs2>/game/csgo/addons`). 
 Launch the plugin on your server: 
