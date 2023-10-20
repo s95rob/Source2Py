@@ -41,7 +41,7 @@ plugins/SamplePlugin.py
 ```
 
 ## Writing Plugins (wip)
-Source2Py loads Python plugins by instantiating the class within the module that shares the same (case-sensitive) name as the module, minus the file extension. Therefor, the plugin `SamplePlugin.py` must define a class named `SamplePlugin` in order to be loaded *at all*. The class defines methods that Source2Py uses as callbacks whenever an engine hook is called. Engine functions are also exposed to Python in the module `Source2Py`. 
+Source2Py loads Python plugins by instantiating the class within the module that shares the same (case-sensitive) name as the module, minus the file extension. Therefore, the plugin `SamplePlugin.py` must define a class named `SamplePlugin` in order to be loaded *at all*. The class defines methods that Source2Py uses as callbacks whenever an engine hook is called. Engine functions are also exposed to Python in the module `Source2Py`. 
 *todo: provide Python API doc*
 
 *SamplePlugin.py example:*
