@@ -19,7 +19,6 @@ namespace Source2Py {
 
     SH_DECL_HOOK2_void(IServerGameClients, ClientCommand, SH_NOATTRIB, 0, CPlayerSlot, const CCommand&);
 
-
     Source2PyPlugin g_Source2PyPlugin;
     IServerGameDLL* server = NULL;
     IServerGameClients* gameclients = NULL;
