@@ -1,9 +1,7 @@
 #pragma once
 
 #include "Log.h"
-
-#include <pybind11/embed.h>
-namespace py = pybind11;
+#include "PyInclude.h"
 
 namespace Source2Py {
 

@@ -1,15 +1,14 @@
 #pragma once
 
-#include "PyPlugin.h"
-
 #include <ISmmPlugin.h>
-#include <igameevents.h>
-#include <iplayerinfo.h>
-#include <sh_vector.h>
+#include "PyPlugin.h"
 
 #include <vector>
 #include <filesystem>
 namespace fs = std::filesystem;
+
+#include <igameevents.h>
+
 
 namespace Source2Py {
 
@@ -38,6 +37,8 @@ namespace Source2Py {
 		void Hook_OnClientConnected(CPlayerSlot slot, const char* pszName, uint64 xuid, const char* pszNetworkID, const char* pszAddress, bool bFakePlayer);
 		bool Hook_ClientConnect(CPlayerSlot slot, const char* pszName, uint64 xuid, const char* pszNetworkID, bool unk1, CBufferString* pRejectReason);
 		void Hook_ClientCommand(CPlayerSlot nSlot, const CCommand& _cmd);
+		void Hook_FireGameEvent(IGameEvent* event);
+
 
 		// Plugin meta information
         virtual const char* GetAuthor() override { return "s95rob"; }

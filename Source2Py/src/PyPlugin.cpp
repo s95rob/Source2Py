@@ -28,31 +28,31 @@ namespace Source2Py {
 	}
 
 	void PyPlugin::Load() {
-		PyRuntime::ExecuteObjectMethod(m_PluginObject, "Load");
+		PyRuntime::ExecuteObjectMethod(m_PluginObject, "OnPluginLoad");
 	}
 
 	void PyPlugin::Unload() {
-		PyRuntime::ExecuteObjectMethod(m_PluginObject, "Unload");
+		PyRuntime::ExecuteObjectMethod(m_PluginObject, "OnPluginUnload");
 	}
 
 	void PyPlugin::GameFrame(bool simulating, bool firstTick, bool lastTick) { 
-		PyRuntime::ExecuteObjectMethod(m_PluginObject, "GameFrame", simulating, firstTick, lastTick);
+		PyRuntime::ExecuteObjectMethod(m_PluginObject, "OnGameFrame", simulating, firstTick, lastTick);
 	}
 
 	void PyPlugin::ClientActive(int playerSlot, bool loadGame, const char* name, uint64_t xuid) { 
-		PyRuntime::ExecuteObjectMethod(m_PluginObject, "ClientActive", playerSlot, loadGame, name, xuid);
+		PyRuntime::ExecuteObjectMethod(m_PluginObject, "OnClientActive", playerSlot, loadGame, name, xuid);
 	}
 
 	void PyPlugin::ClientDisconnect(int playerSlot, int reason, const char* name, uint64_t xuid, const char* networkID) { 
-		PyRuntime::ExecuteObjectMethod(m_PluginObject, "ClientDisconnect", playerSlot, reason, name, xuid, networkID);
+		PyRuntime::ExecuteObjectMethod(m_PluginObject, "OnClientDisconnect", playerSlot, reason, name, xuid, networkID);
 	}
 
 	void PyPlugin::ClientPutInServer(int playerSlot, char const* name, int type, uint64_t xuid) { 
-		PyRuntime::ExecuteObjectMethod(m_PluginObject, "ClientPutInServer", playerSlot, name, type, xuid);
+		PyRuntime::ExecuteObjectMethod(m_PluginObject, "OnClientPutInServer", playerSlot, name, type, xuid);
 	}
 
 	void PyPlugin::ClientSettingsChanged(int playerSlot) { 
-		PyRuntime::ExecuteObjectMethod(m_PluginObject, "ClientSettingsChanged", playerSlot);
+		PyRuntime::ExecuteObjectMethod(m_PluginObject, "OnClientSettingsChanged", playerSlot);
 	}
 
 	void PyPlugin::OnClientConnected(int playerSlot, const char* name, uint64_t xuid, const char* networkID, const char* address, bool fakePlayer) { 
@@ -60,7 +60,11 @@ namespace Source2Py {
 	}
 
 	void PyPlugin::ClientConnect(int playerSlot, const char* name, uint64_t xuid, const char* networkID) { 
-		PyRuntime::ExecuteObjectMethod(m_PluginObject, "ClientConnect", playerSlot, name, xuid, networkID);
+		PyRuntime::ExecuteObjectMethod(m_PluginObject, "OnClientConnect", playerSlot, name, xuid, networkID);
+	}
+
+	void PyPlugin::FireGameEvent(IGameEvent* event) {
+		PyRuntime::ExecuteObjectMethod(m_PluginObject, "OnGameEvent", event);
 	}
 
 }

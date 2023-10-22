@@ -2,6 +2,8 @@
 
 #include "PyRuntime.h"
 
+#include <igameevents.h>
+
 namespace Source2Py {
 
 	class PyPlugin {
@@ -24,6 +26,7 @@ namespace Source2Py {
 		void OnClientConnected(int playerSlot, const char* name, uint64_t xuid, const char* networkID, const char* address, bool fakePlayer);
 		void ClientConnect(int playerSlot, const char* name, uint64_t xuid, const char* networkID);
 		//void ClientCommand(int playerSlot, const CCommand& _cmd); (todo: port CCommand)
+		void FireGameEvent(IGameEvent* event);
 
 		bool IsValid() const { return m_Valid; }
 

@@ -1,6 +1,8 @@
 #include "Source2Py.h"
 #include "Log.h"
 #include "PyRuntime.h"
+#include "Utility.h"
+#include "Events.h"
 
 #include <iserver.h>
 
@@ -39,6 +41,7 @@ namespace Source2Py {
         GET_V_IFACE_ANY(GetServerFactory, server, IServerGameDLL, INTERFACEVERSION_SERVERGAMEDLL);
         GET_V_IFACE_ANY(GetServerFactory, gameclients, IServerGameClients, INTERFACEVERSION_SERVERGAMECLIENTS);
         GET_V_IFACE_ANY(GetEngineFactory, g_pNetworkServerService, INetworkServerService, NETWORKSERVERSERVICE_INTERFACE_VERSION);
+        EventService::Init();
 
         SH_ADD_HOOK_MEMFUNC(IServerGameDLL, GameFrame, server, this, &Source2PyPlugin::Hook_GameFrame, true);
         SH_ADD_HOOK_MEMFUNC(IServerGameClients, ClientActive, gameclients, this, &Source2PyPlugin::Hook_ClientActive, true);
@@ -52,6 +55,9 @@ namespace Source2Py {
         // Temporarily set current working directory to this plugin's directory
         fs::path exePath = fs::current_path(); // save for later
         fs::current_path(GetPluginBaseDirectory());
+
+        // Load events from dumped events file
+        EventService::LoadEventsFromFile("bin/gameevents.ini");
 
         if (!PyRuntime::Init())
             success = false;
@@ -81,6 +87,8 @@ namespace Source2Py {
             plugin.Unload();
 
         PyRuntime::Close();
+
+        EventService::UnloadEvents();
 
         Log::Write("Plugin unloaded successfully");
 
@@ -136,5 +144,10 @@ namespace Source2Py {
     void Source2PyPlugin::Hook_GameFrame(bool simulating, bool bFirstTick, bool bLastTick) {
         for (auto& plugin : m_Plugins)
             plugin.GameFrame(simulating, bFirstTick, bLastTick);
+    }
+
+    void Source2PyPlugin::Hook_FireGameEvent(IGameEvent* event) {
+        for (auto& plugin : m_Plugins)
+            plugin.FireGameEvent(event);
     }
 }

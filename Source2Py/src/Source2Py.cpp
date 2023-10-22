@@ -40,7 +40,7 @@ namespace Source2Py {
 			}
 		}
 
-		Log::Write("Loaded " + std::to_string(m_Plugins.size()) + " Python plugins");
+		Log::Write("Loaded " + std::to_string(m_Plugins.size()) + " Python plugin(s)");
 
 		return true;
 	}
