@@ -1,0 +1,5 @@
+"Metamod Plugin"
+{
+	"alias"		"Source2Py"
+	"file"		"addons/Source2Py/bin/Source2Py"
+}
