@@ -44,12 +44,12 @@ Source2Py loads Python plugins by instantiating the class within the module that
 ```python
 import Source2Py
 
-def SamplePlugin:
+class SamplePlugin:
     # Called when Source2Py loads the plugin
-    def Load(self): 
+    def OnPluginLoad(self): 
         Source2Py.Print("Hello world!") # Prints to console
     
     # Called when Source2Py unloads the plugin
-    def Unload(self) 
+    def OnPluginUnload(self) 
         Source2Py.Print("Goodbye world!")
 ```
